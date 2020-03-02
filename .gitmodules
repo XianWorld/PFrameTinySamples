@@ -1,0 +1,3 @@
+[submodule "PFrameEntities"]
+	path = PFrameEntities
+	url = git@github.com:pangaeahuo/PFrameEntities.git
