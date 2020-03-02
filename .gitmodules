@@ -1,6 +1,0 @@
-[submodule "PFrameEntities"]
-	path = PFrameEntities
-	url = git@github.com:pangaeahuo/PFrameEntities.git
-[submodule "PFrameTiny"]
-	path = PFrameTiny
-	url = git@github.com:pangaeahuo/PFrameTiny.git
