@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191c018495d97e241b8dc46f44c8b5ed, type: 3}
+  m_Name: CardDeckData_1_Warrior
+  m_EditorClassIdentifier: 
+  Id: 1
+  Name: WarriorDeck
+  ItemDatas:
+  - DataSO: {fileID: 11400000, guid: dbfd62e5d7138474ebcab4b6e258068c, type: 2}
+    Level: 1
+    Num: 4
+  - DataSO: {fileID: 11400000, guid: a70e5c88ec552324084e6519a2aed07f, type: 2}
+    Level: 1
+    Num: 4

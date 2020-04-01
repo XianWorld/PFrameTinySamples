@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea1ad6c29809974f8fff58839061ccb, type: 3}
+  m_Name: CardInfoData_1
+  m_EditorClassIdentifier: 
+  Id: 1
+  Name: Strike
+  Type: 0
+  GroupType: 0
+  Datas:
+  - {fileID: 11400000, guid: ee8e06f75d9dcc34688f32f9d5c46b01, type: 2}
+  - {fileID: 11400000, guid: fdbedea789ec8324db2713609341c49b, type: 2}
+  SkillInfoData: {fileID: 11400000, guid: 593a9d11c532ace46ad1e69517486750, type: 2}

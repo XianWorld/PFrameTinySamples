@@ -1,0 +1,30 @@
+{
+    "name": "TinySTS",
+    "references": [
+        "Unity.Entities",
+        "Unity.Jobs",
+        "Unity.Burst",
+        "Unity.Mathematics",
+        "Unity.Transforms",
+        "Unity.Collections",
+        "Unity.Tiny.Main",
+        "Unity.Tiny.EntryPoint",
+        "Unity.Tiny.Input",
+        "Unity.Tiny.Rendering",
+        "Unity.Tiny.RendererExtras",
+        "Unity.Tiny.Core",
+        "PFrame.Entities",
+        "PFrame.Tiny",
+        "PFrame.Tiny.Tweens",
+        "PFrame.Tiny.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

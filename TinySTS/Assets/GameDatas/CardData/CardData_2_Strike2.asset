@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e72df625cb770d4cb11f120592caaa9, type: 3}
+  m_Name: CardData_2_Strike2
+  m_EditorClassIdentifier: 
+  Id: 2
+  Name: Strike2
+  Type: 0
+  Prefab: {fileID: 4746832126968064670, guid: 572217daa1c6ece439af2a1266e00aeb, type: 3}

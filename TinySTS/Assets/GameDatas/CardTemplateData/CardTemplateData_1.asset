@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f36bad24f7f5b4faef2a1099726834, type: 3}
+  m_Name: CardTemplateData_1
+  m_EditorClassIdentifier: 
+  Id: 1
+  Name: RedAttack
+  Type: 0
+  GroupType: 0
+  Prefab: {fileID: 4746832126968064670, guid: 937ee03397401e143a7dd60bf8571c33, type: 3}

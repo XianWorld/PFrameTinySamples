@@ -16,3 +16,6 @@ obj.meta$
 build/**
 PackageSources
 Packages/.gitignore
+
+SceneDependencyCache.meta
+SceneDependencyCache/
