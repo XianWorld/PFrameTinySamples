@@ -53,6 +53,23 @@ namespace TinySTS
     public struct SkillEffectElement : IBufferElementData
     {
         public EEffectType EffectType;
+        public EEffectCastType CastType;
+
         public Entity EffectEntity;
+    }
+
+    public struct Buff : IComponentData
+    {
+
+    }
+
+    public struct BuffEffect : IComponentData
+    {
+
+    }
+
+    public struct BuffElement : IBufferElementData
+    {
+        public Entity BuffEntity;
     }
 }

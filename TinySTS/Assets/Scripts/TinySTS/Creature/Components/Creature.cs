@@ -1,4 +1,5 @@
 ﻿using PFrame.Entities;
+using System;
 using Unity.Collections;
 using Unity.Entities;
 
@@ -19,8 +20,13 @@ namespace TinySTS
         public ushort Level;
     }
 
-    public struct CardElement : IBufferElementData
+    public struct CardElement : IBufferElementData, IEquatable<Entity>
     {
         public Entity CardEntity;
+
+        public bool Equals(Entity other)
+        {
+            return CardEntity.Equals(other);
+        }
     }
 }

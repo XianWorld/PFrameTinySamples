@@ -39,6 +39,7 @@ namespace TinySTS
                 if (EntityManager.HasComponent<UIButtonClickEvent>(endTurnButtonEntity))
                 {
                     CommonUtil.SetFSMStateCmd<PlayerTurnEndState, EnterPlayerTurnEndStateEvent, ExitPlayerTurnEndStateEvent>(EntityManager, entity, (byte)EBattleState.PlayerTurnEnd);
+                    return;
                 }
 
                 Entities
@@ -121,7 +122,7 @@ namespace TinySTS
                         var indicatedState = new TargetIndicatedState { IndicatorType = targetType };
                         Entities.ForEach((Entity creatureEntity, ref Creature creature, ref TargetIndicatable indicatable) =>
                         {
-                            if(IsSkillTarget(EntityManager, playerEntity, skill, creatureEntity))
+                            if (IsSkillTarget(EntityManager, playerEntity, skill, creatureEntity))
                             {
                                 EntityUtil.AddStateData<TargetIndicatedState, EnterTargetIndicatedStateEvent>(EntityManager, creatureEntity, indicatedState, true);
                                 //EntityManager.SetOrAddComponentData<TargetIndicator>(creatureEntity, indicator);
@@ -162,14 +163,34 @@ namespace TinySTS
 
             });
 
-            Entities.ForEach((Entity cardViewEntity, ref CardView cardView, ref Translation translation, ref EnterSelectedStateEvent enterEvent) =>
+            Entities.ForEach((Entity entity, ref Battle battle, ref PlayerSelectState state) =>
             {
+                var selectedCardViewEntity = battle.SelectedCardViewEntity;
+                if(selectedCardViewEntity != Entity.Null)
+                {
+                    Entity selectedCreatureEntity = Entity.Null;
+                    Entities.ForEach((Entity creatureEntity, ref TargetIndicatedState indicatedState, ref PointerClickEvent clickEvent) =>
+                    {
+                        selectedCreatureEntity = creatureEntity;
+                    });
+
+                    if(selectedCreatureEntity != Entity.Null)
+                    {
+                        battle.SelectedTargetEntity = selectedCreatureEntity;
+                        CommonUtil.SetFSMStateCmd<PlayerPlayCardState, EnterPlayerPlayCardStateEvent, ExitPlayerPlayCardStateEvent>(EntityManager, entity, (byte)EBattleState.PlayerPlayCard);
+                        return;
+                    }
+                }
+            });
+
+            Entities.ForEach((Entity cardViewEntity, ref CardView cardView, ref Translation translation, ref EnterSelectedStateEvent enterEvent) =>
+                        {
                 //cardView.IsSelected = true;
 
                 var pos = translation.Value;
-                pos.y = 0.3f;
-                translation.Value = pos;
-            });
+                            pos.y = 0.3f;
+                            translation.Value = pos;
+                        });
 
             Entities.ForEach((Entity cardViewEntity, ref CardView cardView, ref Translation translation, ref ExitSelectedStateEvent enterEvent) =>
             {

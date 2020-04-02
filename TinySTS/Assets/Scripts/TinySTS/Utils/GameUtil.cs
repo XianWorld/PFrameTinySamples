@@ -288,6 +288,60 @@ namespace TinySTS
             return true;
         }
 
+        public static void CastSkill(EntityManager entityManager, Entity casterEntity, Entity targetEntity, Entity skillEntity)
+        {
+            var skill = entityManager.GetComponentData<Skill>(skillEntity);
+
+            var effectBuffer = entityManager.GetBuffer<SkillEffectElement>(skillEntity);
+            int buffEffectNum = 0;
+            var skillEffectArray = effectBuffer.ToNativeArray(Allocator.Temp);
+            var skillEffectNum = effectBuffer.Length;
+            for (int i = 0;i< skillEffectNum;i++)
+            {
+                var effectElement = skillEffectArray[i];
+                if (effectElement.CastType == EEffectCastType.Cast)
+                {
+                    //cast effect
+                    //add cast command
+                }
+                else
+                    buffEffectNum++;
+            }
+
+            if(buffEffectNum > 0)
+            {
+                //create buff entity
+                var buffEntity = entityManager.CreateEntity();
+                var buff = new Buff();
+                entityManager.AddComponentData(buffEntity, buff);
+                entityManager.AddComponentData(buffEntity, skill);
+
+                //add buff effect elements
+                var buffEffectArray = new NativeArray<SkillEffectElement>(buffEffectNum, Allocator.Temp);
+                int j = 0;
+                for (int i = 0; i < skillEffectNum; i++)
+                {
+                    var effectElement = skillEffectArray[i];
+                    if (effectElement.CastType != EEffectCastType.Cast)
+                    {
+                        var buffEffectEntity = entityManager.Instantiate(effectElement.EffectEntity);
+                        var buffEffect = new BuffEffect();
+                        entityManager.AddComponentData(buffEffectEntity, buffEffect);
+
+                        effectElement.EffectEntity = buffEffectEntity;
+                        buffEffectArray[j++] = effectElement;
+                    }
+                }
+
+                var buffEffectBuffer = entityManager.AddBuffer<SkillEffectElement>(buffEntity);
+                buffEffectBuffer.AddRange(buffEffectArray);
+
+                //add buff element to target
+                var buffBuffer = entityManager.GetBuffer<BuffElement>(targetEntity);
+                buffBuffer.Add(new BuffElement { BuffEntity = buffEntity });
+            }
+        }
+
         #region card view container
         public static void UpdateCardViewContainerLayout(CardViewContainer container, Rect rect, int count, Action<int, float3, quaternion> action)
         {
@@ -365,6 +419,40 @@ namespace TinySTS
             entityManager.RemoveComponentSafe<UpdatedState>(containerEntity);
         }
         #endregion
+
+        public static bool AddCardToDeck(EntityManager entityManager, Entity creatureEntity, ECardDeckType deckType, Entity cardEntity)
+        {
+            var deckBuffer = entityManager.GetBuffer<CardDeckElement>(creatureEntity);
+            var deckEntity = deckBuffer[(byte)deckType].DeckEntity;
+            return AddCardToDeck(entityManager, deckEntity, cardEntity);
+        }
+
+        public static bool AddCardToDeck(EntityManager entityManager, Entity deckEntity, Entity cardEntity)
+        {
+            var cardElementBuffer = entityManager.GetBuffer<CardElement>(deckEntity);
+            if (cardElementBuffer.AsNativeArray().Contains<CardElement, Entity>(cardEntity))
+                return false;
+
+            cardElementBuffer.Add(new CardElement { CardEntity = cardEntity });
+            return true;
+        }
+
+        public static bool RemoveCardFromDeck(EntityManager entityManager, Entity creatureEntity, ECardDeckType deckType, Entity cardEntity)
+        {
+            var deckBuffer = entityManager.GetBuffer<CardDeckElement>(creatureEntity);
+            var deckEntity = deckBuffer[(byte)deckType].DeckEntity;
+            return RemoveCardFromDeck(entityManager, deckEntity, cardEntity);
+        }
+        public static bool RemoveCardFromDeck(EntityManager entityManager, Entity deckEntity, Entity cardEntity)
+        {
+            var cardElementBuffer = entityManager.GetBuffer<CardElement>(deckEntity);
+            int index = cardElementBuffer.AsNativeArray().IndexOf<CardElement, Entity>(cardEntity);
+            if (index < 0)
+                return false;
+
+            cardElementBuffer.RemoveAt(index);
+            return true;
+        }
     }
 }
 

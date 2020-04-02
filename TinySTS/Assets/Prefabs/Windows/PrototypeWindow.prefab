@@ -172,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f21b0a8c56cf6742a28fbb6721fe578, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,8 +289,8 @@ MonoBehaviour:
   FontData: {fileID: 11400000, guid: 79c62fdb1966b114ab5f7a694da258c7, type: 2}
   CharacterSize: 1.87
   OffsetZ: -0.01
-  HAlignType: 0
-  VAlignType: 0
+  HAlignType: 1
+  VAlignType: 1
   HSpacing: 0
   VSpacing: 0
   Color: {r: 1, g: 1, b: 1, a: 1}

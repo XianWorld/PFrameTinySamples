@@ -25,6 +25,8 @@ namespace TinySTS
         public bool IsPlayerTurn;
         public Entity CurrentExecutorEntity;
         public byte CurrentExecutorIndex;
+
+        public Entity SelectedTargetEntity;
     }
 
     public struct PlayerTag : IComponentData
